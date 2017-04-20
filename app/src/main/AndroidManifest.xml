@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WorkoutActivity" android:label="@string/workout"/>
+        <activity android:name=".CalibrationActivity" android:label="@string/calibrate"></activity>
     </application>
 
 </manifest>
