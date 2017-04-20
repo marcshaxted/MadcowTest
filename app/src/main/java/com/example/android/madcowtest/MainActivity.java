@@ -1,5 +1,6 @@
 package com.example.android.madcowtest;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,28 +18,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        long date = System.currentTimeMillis();
+        findViewById(R.id.calibrate_text_view).setOnClickListener(new View.OnClickListener(){
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-        String dateString = sdf.format(date);
+            @Override
+            public void onClick (View v) {
+                Intent i = new Intent(getApplicationContext(), CalibrationActivity.class);
+                startActivity(i);
+            }
+        });
 
-        TextView dateTextView = (TextView) findViewById(R.id.date_text_view);
+        findViewById(R.id.next_workout_text_view).setOnClickListener(new View.OnClickListener(){
 
-        dateTextView.setText(dateString);
-    }
+            @Override
+            public void onClick (View v) {
+                Intent i = new Intent(getApplicationContext(), WorkoutActivity.class);
+                startActivity(i);
+            }
+        });
 
-    public void buttonClicked(View view) {
-
-        Button button = (Button) view;
-
-        if (button.getText() != "Done!") {
-
-            button.setText("Done!");
-            button.setClickable(false);
-            Chronometer timer = (Chronometer) findViewById(R.id.chronometer);
-            timer.setVisibility(View.VISIBLE);
-            timer.setBase(SystemClock.elapsedRealtime());
-            timer.start();
-        }
     }
 }
