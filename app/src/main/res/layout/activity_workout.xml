@@ -1,134 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.android.madcowtest.WorkoutActivity">
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <include layout="@layout/workout_header" />
 
-        <TextView
-            android:id="@+id/workout_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:text="Workout A"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/date_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:padding="8sp"
-            android:text="Date" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/exercise1_layout"
+    <LinearLayout
+        android:id="@+id/exercises"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_below="@id/workout_text_view"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/header"
         android:layout_weight="1"
-        android:background="@android:drawable/dialog_holo_light_frame">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/exercise1_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:text="Squat"
-            android:textColor="@android:color/black" />
+        <include layout="@layout/exercise" />
 
-        //This becomes a fragment/class
-        <LinearLayout
-            android:layout_below="@id/exercise1_text_view"
-            style="@style/ExerciseLinearLayout">
+        <include layout="@layout/exercise" />
 
-            <LinearLayout style="@style/SetLinearLayout">
-                <Button style="@style/SetButton" android:onClick="buttonClicked" android:text="5" />
-                <TextView style="@style/SetTextView" android:text="65kg" />
-            </LinearLayout>
+        <include layout="@layout/exercise" />
 
-            <LinearLayout style="@style/SetLinearLayout">
-                <Button style="@style/SetButton" android:onClick="buttonClicked" android:text="5" />
-                <TextView style="@style/SetTextView" android:text="75kg" />
-            </LinearLayout>
+        <include layout="@layout/exercise" />
 
-            <LinearLayout style="@style/SetLinearLayout">
-                <Button style="@style/SetButton" android:onClick="buttonClicked" android:text="5" />
-                <TextView style="@style/SetTextView" android:text="85kg" />
-            </LinearLayout>
 
-            <LinearLayout style="@style/SetLinearLayout">
-                <Button style="@style/SetButton" android:onClick="buttonClicked" android:text="5" />
-                <TextView style="@style/SetTextView" android:text="95kg" />
-            </LinearLayout>
+    </LinearLayout>
 
-            <LinearLayout style="@style/SetLinearLayout">
-                <Button style="@style/SetButton" android:onClick="buttonClicked" android:text="5" />
-                <TextView style="@style/SetTextView" android:text="105kg" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:layout_below="@id/exercise1_layout"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@android:color/darker_gray" />
-
-    <RelativeLayout
+    <include
+        layout="@layout/workout_footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/exercise1_layout"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame">
-
-        <TextView
-            android:id="@+id/timer_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingLeft="8dp"
-            android:paddingRight="16dp"
-            android:text="Rest timer:"
-            android:textColor="@android:color/black" />
-
-        <Chronometer
-            android:id="@+id/chronometer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/timer_text_view"
-            android:textSize="24sp"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/finish_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="4dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="4dp"
-            android:text="Finish" />
-
-    </RelativeLayout>
-
+        android:layout_alignParentBottom="true" />
 
 </LinearLayout>
