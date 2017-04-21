@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
-    style="@style/ExerciseSetStyle"
-    tools:layout_width="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical">
 
     <Button
-        style="@style/ExcerciseSetButtonStyle"
-        tools:text="5" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5" />
 
     <TextView
-        style="@style/ExerciseSetTextViewStyle"
-        tools:text="65kg" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="65kg" />
 
 </LinearLayout>

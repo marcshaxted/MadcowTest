@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/exercise"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:background="@android:drawable/dialog_holo_light_frame"
-    tools:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/exercise_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        tools:text="Exercise name" />
+        android:text="Exercise name" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/exercise_name"
-        android:layout_margin="8dp">
+        android:orientation="horizontal">
 
         <include layout="@layout/exercise_set" />
 
@@ -33,7 +25,8 @@
         <include layout="@layout/exercise_set" />
 
         <include layout="@layout/exercise_set" />
+
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

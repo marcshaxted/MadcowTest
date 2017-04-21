@@ -4,24 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/workout_header" />
+    <include
+        android:id="@+id/header"
+        layout="@layout/workout_header" />
 
     <LinearLayout
         android:id="@+id/exercises"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/header"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <include layout="@layout/exercise" />
-
         <include layout="@layout/exercise" />
-
-        <include layout="@layout/exercise" />
-
-        <include layout="@layout/exercise" />
-
 
     </LinearLayout>
 

@@ -1,14 +1,12 @@
 package com.example.android.madcowtest;
 
-import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Chronometer;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 
 public class WorkoutActivity extends AppCompatActivity {
 
@@ -17,28 +15,19 @@ public class WorkoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
 
-        long date = System.currentTimeMillis();
+        TextView headerTextView = (TextView) this.findViewById(R.id.header).findViewById(R.id.header_title_text_view);
+        headerTextView.setText("Workout A");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-        String dateString = sdf.format(date);
+        TextView dateTextView = (TextView) this.findViewById(R.id.header).findViewById(R.id.header_date_text_view);
+        dateTextView.setText("25th December 2017");
 
-        TextView dateTextView = (TextView) findViewById(R.id.date_text_view);
+        LinearLayout exercises = (LinearLayout) this.findViewById(R.id.exercises);
 
-        dateTextView.setText(dateString);
-    }
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View exerciseLayout = inflater.inflate(R.layout.exercise, (ViewGroup) findViewById(R.id.exercise));
 
-    public void buttonClicked(View view) {
-
-        Button button = (Button) view;
-
-        if (button.getText() != "Done!") {
-
-            button.setText("Done!");
-            button.setClickable(false);
-            Chronometer timer = (Chronometer) findViewById(R.id.chronometer);
-            timer.setVisibility(View.VISIBLE);
-            timer.setBase(SystemClock.elapsedRealtime());
-            timer.start();
+        for (int i = 0; i < 2; i++) {
+            exercises.addView(exerciseLayout);
         }
     }
 }
