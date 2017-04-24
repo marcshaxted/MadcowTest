@@ -2,7 +2,6 @@ package com.example.android.madcowtest;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
@@ -22,16 +21,14 @@ public class ExerciseSet extends LinearLayout {
 
     public ExerciseSet(Context context, int reps, double weight) {
         super(context);
-
         init(context, reps, weight);
     }
 
     private void init(Context context, int reps, double weight) {
-        Log.v(ExerciseSet.class.getSimpleName(), "Initialisation");
 
         this.setOrientation(VERTICAL);
 
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.weight = 1;
 
         this.setLayoutParams(lp);
