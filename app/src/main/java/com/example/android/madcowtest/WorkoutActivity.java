@@ -43,7 +43,7 @@ public class WorkoutActivity extends AppCompatActivity {
         ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(mWorkout.getName());
         ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(mWorkout.getDateString());
 
-        //Create a layout inflater
+
         LayoutInflater inflater = LayoutInflater.from(this);
 
         //Get the exercises view and remove all children
@@ -73,8 +73,5 @@ public class WorkoutActivity extends AppCompatActivity {
             exercises.addView(exerciseLayout);
 
         }
-
-
-
     }
 }

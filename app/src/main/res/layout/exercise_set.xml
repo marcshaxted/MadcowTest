@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.android.madcowtest.ExerciseSet xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:orientation="vertical">
 
-    <com.example.android.madcowtest.ExerciseSet
-        android:id="@+id/set_button"
+    <com.example.android.madcowtest.ExerciseSetButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5" />
+        tools:text="5" />
 
-    <TextView
-        android:id="@+id/set_textview"
+    <com.example.android.madcowtest.ExerciseSetTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="65kg" />
+        tools:text="65kg" />
 
-</LinearLayout>
+</com.example.android.madcowtest.ExerciseSet>
