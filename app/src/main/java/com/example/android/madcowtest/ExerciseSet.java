@@ -20,7 +20,7 @@ public class ExerciseSet {
         return mWeight;
     }
 
-    public Status getStatus() {
+    public Status getStatusString() {
         return mStatus;
     }
 
