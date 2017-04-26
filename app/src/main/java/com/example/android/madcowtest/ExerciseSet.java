@@ -20,11 +20,17 @@ public class ExerciseSet {
         return mWeight;
     }
 
-    public Status getStatusString() {
-        return mStatus;
+    public String getStatusString() {
+        if (mStatus == Status.FAIL) {
+            return "FAIL";
+        } else if (mStatus == Status.PENDING) {
+            return "COMPLETE";
+        } else {
+            return String.valueOf(mReps);
+        }
     }
 
-    public Status toggleStatus() {
+    public void toggleStatus() {
         if (mStatus == Status.FAIL) {
             mStatus = Status.PENDING;
         } else if (mStatus == Status.PENDING) {
@@ -32,7 +38,6 @@ public class ExerciseSet {
         } else {
             mStatus = Status.FAIL;
         }
-        return mStatus;
     }
 
     public enum Status {

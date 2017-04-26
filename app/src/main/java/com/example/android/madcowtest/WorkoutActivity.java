@@ -22,11 +22,8 @@ public class WorkoutActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             ExerciseSet set = (ExerciseSet) v.getTag();
-
             set.toggleStatus();
-
-            ((Button) v).setText(set.getStatus());
-
+            ((Button) v).setText(set.getStatusString());
         }
     };
 
