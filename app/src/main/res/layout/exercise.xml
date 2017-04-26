@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/exercise"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -10,23 +11,6 @@
         android:layout_height="wrap_content"
         android:text="Exercise name" />
 
-    <LinearLayout
-        android:id="@+id/exercise_sets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <include layout="@layout/exercise_set" />
-
-        <include layout="@layout/exercise_set" />
-
-        <include layout="@layout/exercise_set" />
-
-        <include layout="@layout/exercise_set" />
-
-        <include layout="@layout/exercise_set" />
-
-
-    </LinearLayout>
+    <include layout="@layout/exercise_sets" />
 
 </LinearLayout>

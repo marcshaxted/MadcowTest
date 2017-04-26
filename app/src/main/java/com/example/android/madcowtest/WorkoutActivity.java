@@ -14,10 +14,62 @@ public class WorkoutActivity extends AppCompatActivity {
 
     private Workout mWorkout;
 
+    private View.OnClickListener mSetButtonOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
+
+        createWorkout();
+
+        setupHeader(mWorkout.getName(), mWorkout.getDateString());
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+
+        for (Exercise exercise : mWorkout.getExercises()) {
+
+            //Create new exercise layout
+            View exerciseLayout = createExerciseLayout(exercise.getName());
+
+            //Create exercise sets
+            LinearLayout exerciseSets = createExerciseSetsLayout();
+
+            for (ExerciseSet set : exercise.getSets()) {
+                //Get a new exercise set layout
+                View exerciseSet = inflater.inflate(R.layout.exercise_set, null);
+
+                //Set the number of reps on the button
+                Button setButton = ((Button) exerciseSet.findViewById(R.id.set_button));
+                //setButton.setId();
+                setButton.setText(String.valueOf(set.getReps()));
+                setButton.setOnClickListener(mSetButtonOnClickListener);
+
+                //Set the weight on the text view
+                ((TextView) exerciseSet.findViewById(R.id.set_textview)).setText(String.valueOf(set.getWeight()));
+
+                //Add the set to the exercise
+                exerciseSets.addView(exerciseSet);
+            }
+
+            //Add exercise
+            exercises.addView(exerciseLayout);
+
+        }
+    }
+
+    private void setupHeader(String workoutName, String workoutDate) {
+
+        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(workoutName);
+        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(workoutDate);
+    }
+
+    private void createWorkout() {
 
         //Create a test workout
         mWorkout = new Workout("Test workout", new Date());
@@ -39,49 +91,26 @@ public class WorkoutActivity extends AppCompatActivity {
         ex2.getSets().add(new ExerciseSet(5, 175));
 
         mWorkout.getExercises().add(ex2);
+    }
 
+    private View createExerciseLayout(String name) {
 
-        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(mWorkout.getName());
-        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(mWorkout.getDateString());
+        //Inflate a new exercise layout
+        View exerciseLayout = this.getLayoutInflater().inflate(R.layout.exercise, null);
 
-        LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout exercises = (LinearLayout) this.findViewById(R.id.exercises);
-        exercises.removeAllViews();
+        //Add exercise name
+        ((TextView) exerciseLayout.findViewById(R.id.exercise_name)).setText(name);
 
-        for (Exercise exercise : mWorkout.getExercises()) {
+        //Get exercise sets and remove all children
+        LinearLayout exerciseSets = (LinearLayout) exerciseLayout.findViewById(R.id.exercise_sets);
+        exerciseSets.removeAllViews();
 
-            //LinearLayout is a subclass of ViewGroup, which has a method called addView. The addView method should be what you are after.
+        return exerciseLayout;
+    }
 
-            //Create new exercise layout
-            View exerciseLayout = inflater.inflate(R.layout.exercise, null);
-
-            //Add excercise name
-            ((TextView) exerciseLayout.findViewById(R.id.exercise_name)).setText(exercise.getName());
-
-            //Get exercise sets and remove all children
-            LinearLayout exerciseSets = (LinearLayout) exerciseLayout.findViewById(R.id.exercise_sets);
-            exerciseSets.removeAllViews();
-
-            for (ExerciseSet set : exercise.getSets()) {
-                //Get a new exercise set layout
-                View exerciseSet = inflater.inflate(R.layout.exercise_set, null);
-
-                //Set the number of reps on the button
-                ((Button) exerciseSet.findViewById(R.id.set_button)).setText(String.valueOf(set.getReps()));
-
-                //Set the weight on the text view
-                ((TextView) exerciseSet.findViewById(R.id.set_textview)).setText(String.valueOf(set.getWeight()));
-
-                //Add the set to the exercise
-                exerciseSets.addView(exerciseSet);
-            }
-
-            //Add exercise
-            exercises.addView(exerciseLayout);
-
-        }
-
-
-
+    private LinearLayout createExerciseSetsLayout() {
+        LinearLayout exerciseSets = (LinearLayout) this.getLayoutInflater().inflate(R.layout.exercise_sets, null);
+        exerciseSets.removeAllViews();
+        return exerciseSets;
     }
 }
