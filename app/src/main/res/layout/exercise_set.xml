@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="65kg" />
+        android:text="65kg"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

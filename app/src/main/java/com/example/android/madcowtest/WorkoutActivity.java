@@ -1,8 +1,11 @@
 package com.example.android.madcowtest;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -15,8 +18,6 @@ public class WorkoutActivity extends AppCompatActivity {
     private LayoutInflater mInflater;
 
     private Workout mWorkout;
-
-
     private View.OnClickListener mSetButtonOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -28,29 +29,32 @@ public class WorkoutActivity extends AppCompatActivity {
     };
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
 
-        createWorkout();
+        init();
+    }
 
-        setupHeader(mWorkout.getName(), mWorkout.getDateString());
-
+    private void init() {
+//        this.getActionBar().setDisplayHomeAsUpEnabled(true);
         mInflater = LayoutInflater.from(this);
 
-        for (Exercise exercise : mWorkout.getExercises()) {
+        //Create a test workout.  At some point this will be loaded from store and the weights and reps calculated
+        createWorkout();
 
-            //Create new exercise layout
-            View exerciseLayout = createExerciseLayout(exercise.getName());
-
-            for (ExerciseSet set : exercise.getSets()) {
-
-                LinearLayout exerciseSets = (LinearLayout) exerciseLayout.findViewById(R.id.exercise_sets);
-                exerciseSets.addView(createExerciseSet(set));
-            }
-
-            ((LinearLayout) this.findViewById(R.id.exercises)).addView(exerciseLayout);
-        }
+        setupWorkoutLayout();
     }
 
     private void setupHeader(String workoutName, String workoutDate) {
@@ -83,6 +87,32 @@ public class WorkoutActivity extends AppCompatActivity {
         mWorkout.getExercises().add(ex2);
     }
 
+    private void setupWorkoutLayout() {
+        setupHeader(mWorkout.getName(), mWorkout.getDateString());
+        ((LinearLayout) this.findViewById(R.id.exercises)).removeAllViews();
+
+        this.findViewById(R.id.finish_workout_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v(this.getClass().getSimpleName(), "Writing out the status of mWorkout");
+            }
+        });
+
+        for (Exercise exercise : mWorkout.getExercises()) {
+
+            //Create new exercise layout
+            View exerciseLayout = createExerciseLayout(exercise.getName());
+
+            for (ExerciseSet set : exercise.getSets()) {
+
+                LinearLayout exerciseSets = (LinearLayout) exerciseLayout.findViewById(R.id.exercise_sets);
+                exerciseSets.addView(createExerciseSet(set));
+            }
+
+            ((LinearLayout) this.findViewById(R.id.exercises)).addView(exerciseLayout);
+        }
+    }
+
     private View createExerciseLayout(String name) {
 
         //Inflate a new exercise layout
@@ -109,7 +139,7 @@ public class WorkoutActivity extends AppCompatActivity {
         setButton.setText(String.valueOf(set.getReps()));
 
         //Set button tag
-        setButton.setTag(0, set);
+        setButton.setTag(set);
 
         //Set button click listener
         setButton.setOnClickListener(mSetButtonOnClickListener);

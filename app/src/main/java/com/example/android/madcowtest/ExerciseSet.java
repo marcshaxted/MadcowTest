@@ -24,9 +24,9 @@ public class ExerciseSet {
         if (mStatus == Status.FAIL) {
             return "FAIL";
         } else if (mStatus == Status.PENDING) {
-            return "COMPLETE";
-        } else {
             return String.valueOf(mReps);
+        } else {
+            return "COMPLETE";
         }
     }
 

@@ -9,12 +9,16 @@
         android:id="@+id/exercise_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exercise name" />
+        android:layout_margin="8dp"
+        android:text="Exercise name"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:id="@+id/exercise_sets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:orientation="horizontal">
 
         <include layout="@layout/exercise_set" />
