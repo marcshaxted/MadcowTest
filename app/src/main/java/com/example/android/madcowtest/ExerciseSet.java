@@ -26,7 +26,7 @@ public class ExerciseSet {
         } else if (mStatus == Status.PENDING) {
             return String.valueOf(mReps);
         } else {
-            return "COMPLETE";
+            return "DONE";
         }
     }
 
@@ -34,7 +34,7 @@ public class ExerciseSet {
         if (mStatus == Status.FAIL) {
             mStatus = Status.PENDING;
         } else if (mStatus == Status.PENDING) {
-            mStatus = Status.COMPLETE;
+            mStatus = Status.DONE;
         } else {
             mStatus = Status.FAIL;
         }
@@ -42,7 +42,7 @@ public class ExerciseSet {
 
     public enum Status {
         PENDING,
-        COMPLETE,
+        DONE,
         FAIL
     }
 
