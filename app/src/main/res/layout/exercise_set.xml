@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/exercise_set"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -10,14 +11,13 @@
         android:id="@+id/set_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5" />
+        tools:text="5" />
 
     <TextView
         android:id="@+id/set_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="65kg"
-        android:textColor="@android:color/black" />
+        tools:text="65kg" />
 
 </LinearLayout>
