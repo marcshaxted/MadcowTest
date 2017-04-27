@@ -8,20 +8,27 @@
 
     <TextView
         android:id="@+id/calibrate_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MainActivityButton"
         android:text="Calibrate" />
 
     <TextView
         android:id="@+id/next_workout_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next workout" />
+        style="@style/MainActivityButton"
+        android:text="Next workout"
+        android:textAllCaps="true" />
 
     <TextView
         android:id="@+id/history_text_view"
+        style="@style/MainActivityButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="History" />
+
+    <TextView
+        android:id="@+id/settings_text_view"
+        style="@style/MainActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings" />
 
 </LinearLayout>
