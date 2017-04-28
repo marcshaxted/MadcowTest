@@ -9,8 +9,10 @@
 
     <Button
         android:id="@+id/set_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/round_button"
         tools:text="5" />
 
     <TextView
@@ -18,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:text="65kg" />
+        android:gravity="center"
+        tools:text="65.00" />
 
 </LinearLayout>

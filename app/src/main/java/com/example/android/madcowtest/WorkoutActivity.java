@@ -128,9 +128,12 @@ public class WorkoutActivity extends AppCompatActivity {
         return exerciseLayout;
     }
 
-    private View createExerciseSet(ExerciseSet set) {
+    private LinearLayout createExerciseSet(ExerciseSet set) {
 
-        View exerciseSet = mInflater.inflate(R.layout.exercise_set, null);
+        LinearLayout exerciseSet = (LinearLayout) mInflater.inflate(R.layout.exercise_set, null);
+        LinearLayout.LayoutParams exerciseLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        exerciseLayoutParams.weight = 1;
+        exerciseSet.setLayoutParams(exerciseLayoutParams);
 
         //Create a new set button
         Button setButton = ((Button) exerciseSet.findViewById(R.id.set_button));
