@@ -1,10 +1,12 @@
 package com.example.android.madcowtest;
 
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +33,24 @@ public class WorkoutActivity extends AppCompatActivity {
     };
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.workout_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+            case R.id.include_optional_exercise:
+                Log.v(this.getClass().getSimpleName(), "Include optional exercise");
+                return true;
+
+            case R.id.workout_settings:
+                Log.v(this.getClass().getSimpleName(), "Change workout settings");
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -45,6 +58,15 @@ public class WorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
+
+        Toolbar tb = (Toolbar) findViewById(R.id.workout_toolbar);
+        setSupportActionBar(tb);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(true); // show or hide the default home button
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowCustomEnabled(true); // enable overriding the default toolbar layout
+        ab.setDisplayShowTitleEnabled(false); // disable the default title e
 
         init();
     }
@@ -61,8 +83,8 @@ public class WorkoutActivity extends AppCompatActivity {
 
     private void setupHeader(String workoutName, String workoutDate) {
 
-        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(workoutName);
-        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(workoutDate);
+//        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(workoutName);
+//        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(workoutDate);
     }
 
     private void createWorkout() {
