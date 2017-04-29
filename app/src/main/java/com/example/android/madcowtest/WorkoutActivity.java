@@ -68,7 +68,7 @@ public class WorkoutActivity extends AppCompatActivity {
         //Create a test workout
         mWorkout = new Workout("Test workout", new Date());
 
-        Exercise ex1 = new Exercise("Squats");
+        Exercise ex1 = new Exercise("Squat");
         ex1.addSet(new ExerciseSet(5, 65));
         ex1.addSet(new ExerciseSet(5, 75));
         ex1.addSet(new ExerciseSet(5, 85));
@@ -85,6 +85,15 @@ public class WorkoutActivity extends AppCompatActivity {
         ex2.addSet(new ExerciseSet(5, 175));
 
         mWorkout.getExercises().add(ex2);
+
+        Exercise ex3 = new Exercise("Row");
+        ex3.addSet(new ExerciseSet(5, 35));
+        ex3.addSet(new ExerciseSet(5, 45));
+        ex3.addSet(new ExerciseSet(5, 55));
+        ex3.addSet(new ExerciseSet(5, 65));
+        ex3.addSet(new ExerciseSet(5, 175));
+
+        mWorkout.getExercises().add(ex3);
     }
 
     private void setupWorkoutLayout() {

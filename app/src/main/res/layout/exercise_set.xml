@@ -4,15 +4,17 @@
     android:id="@+id/exercise_set"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="4dp"
     android:layout_weight="1"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/set_button"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_margin="4dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
         android:background="@drawable/round_button"
+        android:textColor="@android:color/white"
         tools:text="5" />
 
     <TextView
@@ -20,7 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:gravity="center"
+        android:textColor="@android:color/black"
         tools:text="65.00" />
 
 </LinearLayout>

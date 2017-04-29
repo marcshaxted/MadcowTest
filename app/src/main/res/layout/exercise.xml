@@ -4,28 +4,39 @@
     android:id="@+id/exercise"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:background="@android:drawable/dialog_holo_light_frame"
+    android:layout_marginTop="4dp"
+    android:layout_weight="1"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/exercise_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         tools:text="Exercise name" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/divider" />
+
     <LinearLayout
         android:id="@+id/exercise_sets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal">
 
         <include layout="@layout/exercise_set" />
-
 
         <include layout="@layout/exercise_set" />
 

@@ -19,6 +19,9 @@
         <include layout="@layout/exercise" />
         <include layout="@layout/exercise" />
 
+        <include layout="@layout/exercise" />
+
+
     </LinearLayout>
 
     <include
