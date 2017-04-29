@@ -4,8 +4,8 @@
     android:id="@+id/exercise"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginTop="4dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
     android:background="@android:color/white"
     android:orientation="vertical"
     android:paddingBottom="4dp">
@@ -19,6 +19,7 @@
         android:layout_marginTop="8dp"
         android:textAllCaps="true"
         android:textColor="@android:color/black"
+        android:textSize="16dp"
         tools:text="Exercise name" />
 
     <View
@@ -44,10 +45,13 @@
 
         <include layout="@layout/exercise_set" />
 
-        <include layout="@layout/exercise_set" />
-
-        <include layout="@layout/exercise_set" />
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/sep"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/activityBackground" />
 
 </LinearLayout>

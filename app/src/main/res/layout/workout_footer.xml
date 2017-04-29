@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white">
+    android:background="@color/primary">
 
     <TextView
         android:id="@+id/timer_text_view"
@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_margin="8dp"
-        android:text="Timer: 00:00" />
+        android:text="Timer: 00:00"
+        android:textColor="@color/icons"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/finish_workout_button"

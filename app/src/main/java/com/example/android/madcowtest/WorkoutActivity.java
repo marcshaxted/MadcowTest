@@ -160,6 +160,10 @@ public class WorkoutActivity extends AppCompatActivity {
             //Get the exercise layout back
             ViewGroup exerciseLayout = (LinearLayout) parent.getChildAt(i);
 
+            if (i == exercises.size() - 1) {
+                exerciseLayout.removeView(exerciseLayout.findViewById(R.id.sep));
+            }
+
             //Add exercise name
             ((TextView) exerciseLayout.findViewById(R.id.exercise_name)).setText(exercise.getName());
 
