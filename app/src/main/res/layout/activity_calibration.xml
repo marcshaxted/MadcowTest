@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,19 +8,30 @@
     android:orientation="vertical"
     tools:context="com.example.android.madcowtest.CalibrationActivity">
 
-    <TextView
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/calibration_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Calibrations"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textSize="18dp" />
+        android:layout_height="100dp"
+        android:background="@color/primary"
+        android:elevation="4dp"
+        android:titleTextColor="@color/icons"
+        app:theme="@style/ToolbarColoredBackArrow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Calibration"
+            android:textAllCaps="false"
+            android:textColor="@color/icons"
+            android:textSize="24dp" />
+
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/calibrations"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -32,36 +44,43 @@
         <include layout="@layout/calibration" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_weight="0"
+        android:background="@color/primary"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Smallest plate"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Match PBs"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Smallest plate"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Match PBs"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_margin="8dp"
             android:text="Save" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

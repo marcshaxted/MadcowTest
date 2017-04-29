@@ -1,7 +1,9 @@
 package com.example.android.madcowtest;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -53,6 +55,21 @@ public class CalibrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calibration);
+
+        Toolbar tb = (Toolbar) findViewById(R.id.calibration_toolbar);
+        setSupportActionBar(tb);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(true); // show or hide the default home button
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowCustomEnabled(true); // enable overriding the default toolbar layout
+        ab.setDisplayShowTitleEnabled(false); // disable the default title e
+
+        init();
+    }
+
+
+    private void init() {
 
         mInflater = LayoutInflater.from(this);
         ((LinearLayout) this.findViewById(R.id.calibrations)).removeAllViews();
