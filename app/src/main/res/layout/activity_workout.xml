@@ -9,20 +9,29 @@
         android:id="@+id/header"
         layout="@layout/workout_header" />
 
-    <LinearLayout
-        android:id="@+id/exercises"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_weight="1">
 
-        <include layout="@layout/exercise" />
-        <include layout="@layout/exercise" />
+        <LinearLayout
+            android:id="@+id/exercises"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <include layout="@layout/exercise" />
+
+            <include layout="@layout/exercise" />
+
+            <include layout="@layout/exercise" />
+
+            <include layout="@layout/exercise" />
+
+            <include layout="@layout/exercise" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <include
         layout="@layout/workout_footer"
