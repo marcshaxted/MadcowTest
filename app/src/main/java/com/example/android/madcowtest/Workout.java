@@ -11,6 +11,7 @@ public class Workout {
     private Date mDate;
     private String mDateString;
     private ArrayList<Exercise> mExercises;
+    private Exercise mAccessoryExercise;
 
     public Workout(String name, Date date) {
         mWorkoutName = name;
@@ -18,6 +19,14 @@ public class Workout {
         DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
         mDateString = dateFormat.format(date);
         mExercises = new ArrayList<>();
+    }
+
+    public void setAccessoryExercise(Exercise exercise) {
+        mAccessoryExercise = exercise;
+    }
+
+    public Exercise getAccessoryExcercise() {
+        return mAccessoryExercise;
     }
 
     public ArrayList<Exercise> getExercises() {

@@ -40,6 +40,10 @@ public class ExerciseSet {
         }
     }
 
+    public Status getStatus() {
+        return mStatus;
+    }
+
     public enum Status {
         PENDING,
         DONE,

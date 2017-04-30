@@ -1,6 +1,7 @@
 package com.example.android.madcowtest;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +30,13 @@ public class WorkoutActivity extends AppCompatActivity {
             ExerciseSet set = (ExerciseSet) v.getTag();
             set.toggleStatus();
             ((Button) v).setText(set.getStatusString());
+
+            if (set.getStatus() != ExerciseSet.Status.PENDING) {
+                v.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimaryDark));
+            } else {
+                v.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.accent));
+            }
+
         }
     };
 
@@ -43,7 +51,14 @@ public class WorkoutActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.include_optional_exercise:
-                Log.v(this.getClass().getSimpleName(), "Include optional exercise");
+                Log.v(this.getClass().getSimpleName(), String.valueOf(item.getTitle()));
+
+                if (item.getTitle() == "Include accessory exercise") {
+                    item.setTitle("Exclude accessory exercise");
+                } else {
+                    item.setTitle("Include accessory exercise");
+                }
+
                 return true;
 
             case R.id.workout_settings:
@@ -125,7 +140,7 @@ public class WorkoutActivity extends AppCompatActivity {
         ex4.addSet(new ExerciseSet(5, 45));
         ex4.addSet(new ExerciseSet(5, 55));
 
-        mWorkout.getExercises().add(ex4);
+        mWorkout.setAccessoryExercise(ex4);
     }
 
     private void setupWorkoutLayout() {
@@ -161,7 +176,7 @@ public class WorkoutActivity extends AppCompatActivity {
             ViewGroup exerciseLayout = (LinearLayout) parent.getChildAt(i);
 
             if (i == exercises.size() - 1) {
-                exerciseLayout.removeView(exerciseLayout.findViewById(R.id.sep));
+                exerciseLayout.removeView(exerciseLayout.findViewById(R.id.exercise_separator));
             }
 
             //Add exercise name
@@ -175,7 +190,6 @@ public class WorkoutActivity extends AppCompatActivity {
 
             i++;
         }
-
     }
 
     private void addExerciseSets(ArrayList<ExerciseSet> sets, ViewGroup parent) {
