@@ -8,8 +8,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CalibrationActivity extends AppCompatActivity {
@@ -72,27 +72,29 @@ public class CalibrationActivity extends AppCompatActivity {
     private void init() {
 
         mInflater = LayoutInflater.from(this);
-        ((LinearLayout) this.findViewById(R.id.calibrations)).removeAllViews();
+        ViewGroup calibrationsLayout = (ViewGroup) this.findViewById(R.id.calibrations);
+        calibrationsLayout.removeAllViews();
 
         String[] exercises = new String[]{"squat 1rm", "bench 1rm", "deadlift 1rm", "press 1rm"};
 
-        //Change this to add to inflate in parent
+        int i = 0;
         for (String s : exercises) {
 
-            LinearLayout calib = (LinearLayout) mInflater.inflate(R.layout.calibration, null);
-            ((TextView) calib.findViewById(R.id.name)).setText(s);
-            ((LinearLayout) this.findViewById(R.id.calibrations)).addView(calib);
-            setupEventListeners(calib);
+            mInflater.inflate(R.layout.calibration, calibrationsLayout);
+            ViewGroup calibrationLayout = (ViewGroup) calibrationsLayout.getChildAt(i);
+            ((TextView) calibrationLayout.findViewById(R.id.name)).setText(s);
+            setupEventListeners(calibrationLayout);
+            i++;
         }
     }
 
-    private void setupEventListeners(LinearLayout calib) {
+    private void setupEventListeners(ViewGroup calibrationLayout) {
 
-        EditText repsInput = (EditText) calib.findViewById(R.id.reps);
-        repsInput.addTextChangedListener(new GenericTextWatcher(calib));
+        EditText repsInput = (EditText) calibrationLayout.findViewById(R.id.reps);
+        repsInput.addTextChangedListener(new GenericTextWatcher(calibrationLayout));
 
-        EditText weightInput = (EditText) calib.findViewById(R.id.weight);
-        weightInput.addTextChangedListener(new GenericTextWatcher(calib));
+        EditText weightInput = (EditText) calibrationLayout.findViewById(R.id.weight);
+        weightInput.addTextChangedListener(new GenericTextWatcher(calibrationLayout));
     }
 
     private double calcOneRepMax(int reps, double weight) {
