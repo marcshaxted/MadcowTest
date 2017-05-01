@@ -76,6 +76,7 @@ public class CalibrationActivity extends AppCompatActivity {
 
         String[] exercises = new String[]{"squat 1rm", "bench 1rm", "deadlift 1rm", "press 1rm"};
 
+        //Change this to add to inflate in parent
         for (String s : exercises) {
 
             LinearLayout calib = (LinearLayout) mInflater.inflate(R.layout.calibration, null);
@@ -95,10 +96,7 @@ public class CalibrationActivity extends AppCompatActivity {
     }
 
     private double calcOneRepMax(int reps, double weight) {
-//        double retVal = weight;
-//        double foo = (double) reps / 30;
-//        foo = foo + 1;
-//        retVal = retVal * foo;
+
         return weight / (1.0278 - (0.0287 * (double) reps));
     }
 

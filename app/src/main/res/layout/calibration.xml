@@ -4,17 +4,37 @@
     android:id="@+id/calibration"
     style="@style/Panel"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
     android:layout_weight="1"
     android:orientation="vertical"
-    android:paddingTop="8dp">
+    android:paddingTop="8dp"
+    tools:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/name"
-        style="@style/PanelTitleText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Squats" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/PanelTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Squats" />
+
+        <EditText
+            android:id="@+id/set_interval"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:drawableRight="@mipmap/ic_percent_grey600_18dp"
+            android:gravity="center"
+            android:hint="Set interval"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -75,9 +95,5 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/activityBackground" />
 
 </LinearLayout>
