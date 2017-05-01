@@ -1,7 +1,6 @@
 package com.example.android.madcowtest;
 
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +22,7 @@ public class WorkoutActivity extends AppCompatActivity {
     private LayoutInflater mInflater;
 
     private Workout mWorkout;
+
     private View.OnClickListener mSetButtonOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -31,12 +31,11 @@ public class WorkoutActivity extends AppCompatActivity {
             set.toggleStatus();
             ((Button) v).setText(set.getStatusString());
 
-            if (set.getStatus() != ExerciseSet.Status.PENDING) {
-                v.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimaryDark));
-            } else {
-                v.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.accent));
-            }
-
+//            if (set.getStatus() != ExerciseSet.Status.PENDING) {
+//                v.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimaryDark));
+//            } else {
+//                v.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.accent));
+//            }
         }
     };
 
@@ -90,7 +89,7 @@ public class WorkoutActivity extends AppCompatActivity {
         mInflater = LayoutInflater.from(this);
 
         //Create a test workout.  At some point this will be loaded from store and the weights and reps calculated
-        createWorkout();
+        createWorkout(Workout.WorkoutType.WORKOUT_A, 120.0, 85.0, 90.0);
 
         //Set up the layout
         setupWorkoutLayout();
@@ -98,49 +97,25 @@ public class WorkoutActivity extends AppCompatActivity {
 
     private void setupHeader(String workoutName, String workoutDate) {
 
-//        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(workoutName);
-//        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(workoutDate);
+        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_title)).setText(workoutName);
+        ((TextView) this.findViewById(R.id.header).findViewById(R.id.header_date)).setText(workoutDate);
     }
 
-    private void createWorkout() {
+    private void createWorkout(Workout.WorkoutType workoutType, double exerciseOneWeight, double exerciseTwoWeight, double exerciseThreeWeight) {
 
-        //Create a test workout
-        mWorkout = new Workout("Test workout", new Date());
+        switch (workoutType) {
+            case WORKOUT_A:
+                mWorkout = new WorkoutA(new Date(), exerciseOneWeight, exerciseTwoWeight, exerciseThreeWeight);
+                break;
 
-        Exercise ex1 = new Exercise("Squat");
-        ex1.addSet(new ExerciseSet(5, 65));
-        ex1.addSet(new ExerciseSet(5, 75));
-        ex1.addSet(new ExerciseSet(5, 85));
-        ex1.addSet(new ExerciseSet(5, 95));
-        ex1.addSet(new ExerciseSet(3, 105));
-        ex1.addSet(new ExerciseSet(8, 95));
+            case WORKOUT_B:
+                mWorkout = new WorkoutB(new Date(), exerciseOneWeight, exerciseTwoWeight, exerciseThreeWeight);
+                break;
 
-        mWorkout.getExercises().add(ex1);
-
-        Exercise ex2 = new Exercise("Bench press");
-        ex2.addSet(new ExerciseSet(5, 35));
-        ex2.addSet(new ExerciseSet(5, 45));
-        ex2.addSet(new ExerciseSet(5, 55));
-        ex2.addSet(new ExerciseSet(5, 65));
-        ex2.addSet(new ExerciseSet(5, 175));
-
-        mWorkout.getExercises().add(ex2);
-
-        Exercise ex3 = new Exercise("Row");
-        ex3.addSet(new ExerciseSet(5, 35));
-        ex3.addSet(new ExerciseSet(5, 45));
-        ex3.addSet(new ExerciseSet(5, 55));
-        ex3.addSet(new ExerciseSet(5, 65));
-        ex3.addSet(new ExerciseSet(5, 175));
-
-        mWorkout.getExercises().add(ex3);
-
-        Exercise ex4 = new Exercise("Chin up");
-        ex4.addSet(new ExerciseSet(5, 35));
-        ex4.addSet(new ExerciseSet(5, 45));
-        ex4.addSet(new ExerciseSet(5, 55));
-
-        mWorkout.setAccessoryExercise(ex4);
+            case WORKOUT_C:
+                mWorkout = new WorkoutC(new Date(), exerciseOneWeight, exerciseTwoWeight, exerciseThreeWeight);
+                break;
+        }
     }
 
     private void setupWorkoutLayout() {

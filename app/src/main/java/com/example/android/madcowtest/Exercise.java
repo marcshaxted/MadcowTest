@@ -8,7 +8,6 @@ public class Exercise {
     private String mExerciseName;
     private ArrayList<ExerciseSet> mSets;
 
-
     public Exercise(String name) {
         mExerciseName = name;
         mSets = new ArrayList<>();

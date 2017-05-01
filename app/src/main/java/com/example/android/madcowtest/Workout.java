@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Workout {
+abstract class Workout {
+
+    double mMinPlateSize = 1.25;
 
     private String mWorkoutName;
     private Date mDate;
@@ -43,5 +45,16 @@ public class Workout {
 
     public Date getDate() {
         return mDate;
+    }
+
+    protected double calcWeight(double finalWeight, double interval) {
+        int retVal = (int) Math.round(finalWeight * (1 - interval) / (2 * mMinPlateSize));
+        return retVal * 2 * mMinPlateSize;
+    }
+
+    public static enum WorkoutType {
+        WORKOUT_A,
+        WORKOUT_B,
+        WORKOUT_C
     }
 }
